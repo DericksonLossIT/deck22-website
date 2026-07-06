@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "DK22 — Conveniência | Canasvieiras",
+    "description": "A conveniência de Canasvieiras, sempre por perto — de dia ou de madrugada."
+  },
+  "nav": {
+    "sobre": "Sobre",
+    "cardapio": "Cardápio",
+    "local": "Localização",
+    "delivery": "Delivery"
+  },
+  "hero": {
+    "subtitle": "A conveniência de Canasvieiras, sempre por perto — de dia ou de madrugada.",
+    "checking": "verificando horário...",
+    "open": "Aberto agora",
+    "closed": "Fechado no momento",
+    "cta": {
+      "cardapio": "Ver cardápio",
+      "whatsapp": "Chamar no WhatsApp"
+    }
+  },
+  "ticker": [
+    "DESTILADOS",
+    "GIN & VODKA",
+    "ESPUMANTES",
+    "TABACARIA",
+    "GELO",
+    "BEBIDAS GELADAS",
+    "COMBOS & DOSES"
+  ],
+  "sobre": {
+    "eyebrow": "A casa",
+    "title": "Sua conveniência em Canasvieiras",
+    "text": "O DK22 é a conveniência do bairro: o que faltar em casa, na praia ou na night, tem aqui — gelo, bebida gelada, cigarro e muito mais.",
+    "li1": "Negócio de família, tocado por quem mora aqui",
+    "li2": "Seleção pensada pra praia: do gelo ao espumante",
+    "li3": "Aberto todos os dias, com reforço nos finais de semana",
+    "tag": "Canasvieiras, Florianópolis"
+  },
+  "cardapio": {
+    "eyebrow": "Cardápio",
+    "title": "O que tem na casa",
+    "text": "O cardápio completo chega aqui em breve. Por enquanto, chama no WhatsApp que a gente já te passa tudo.",
+    "mock": {
+      "title": "Cardápio digital em breve",
+      "text": "Destilados, gin & vodka, espumantes, tabacaria, gelo e bebidas geladas — tudo num toque.",
+      "cta": "Pedir pelo WhatsApp"
+    }
+  },
+  "local": {
+    "eyebrow": "Horário & Localização",
+    "title": "Bora até lá",
+    "text": "Em Canasvieiras, a poucos passos da praia. Verão ou inverno, sempre tem alguém de plantão.",
+    "day1": "Todos os dias",
+    "hour1": "10h–12h até 02h",
+    "note": "A gente abre em algum horário entre 10h e 12h — mas fecha sempre às 02h, todo santo dia.",
+    "map": {
+      "text": "Canasvieiras, Florianópolis - SC",
+      "cta": "Abrir no Google Maps"
+    }
+  },
+  "delivery": {
+    "eyebrow": "Delivery próprio",
+    "title": "Não quer sair? A gente leva.",
+    "text": "Delivery próprio do DK22, sem intermediário — pedido direto, entrega rápida.",
+    "cta": "Pedir pelo WhatsApp"
+  },
+  "social": {
+    "eyebrow": "Instagram",
+    "title": "Bastidores, promoções e a night",
+    "cta": "Seguir no Instagram"
+  },
+  "footer": {
+    "note": "DK22 · Canasvieiras, Florianópolis - SC · Negócio de família"
+  }
+}

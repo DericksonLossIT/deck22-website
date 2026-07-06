@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "sobre": "About",
+    "cardapio": "Menu",
+    "local": "Location",
+    "delivery": "Delivery"
+  },
+  "hero": {
+    "subtitle": "Canasvieiras' corner store, always close by — day or late night.",
+    "checking": "checking hours...",
+    "open": "Open now",
+    "closed": "Closed right now",
+    "cta": {
+      "cardapio": "See menu",
+      "whatsapp": "Message on WhatsApp"
+    }
+  },
+  "ticker": [
+    "SPIRITS",
+    "GIN & VODKA",
+    "SPARKLING WINE",
+    "TOBACCO",
+    "ICE",
+    "COLD DRINKS",
+    "COMBOS & SHOTS"
+  ],
+  "sobre": {
+    "eyebrow": "The house",
+    "title": "Your corner store in Canasvieiras",
+    "text": "DK22 is the neighborhood convenience store: whatever you're missing at home, at the beach, or at night, it's here — ice, cold drinks, cigarettes and more.",
+    "li1": "Family-run business, staffed by locals",
+    "li2": "A selection built for the beach: from ice to sparkling wine",
+    "li3": "Open every day, with extra hands on weekends",
+    "tag": "Canasvieiras, Florianópolis"
+  },
+  "cardapio": {
+    "eyebrow": "Menu",
+    "title": "What's in the house",
+    "text": "The full menu is coming soon. In the meantime, message us on WhatsApp and we'll send you everything.",
+    "mock": {
+      "title": "Digital menu coming soon",
+      "text": "Spirits, gin & vodka, sparkling wine, tobacco, ice and cold drinks — all in one tap.",
+      "cta": "Order on WhatsApp"
+    }
+  },
+  "local": {
+    "eyebrow": "Hours & Location",
+    "title": "Come on over",
+    "text": "In Canasvieiras, steps from the beach. Summer or winter, someone's always on duty.",
+    "day1": "Every day",
+    "hour1": "10am–12pm until 2am",
+    "note": "We open sometime between 10am and 12pm — but we always close at 2am, every single day.",
+    "map": {
+      "text": "Canasvieiras, Florianópolis - SC",
+      "cta": "Open in Google Maps"
+    }
+  },
+  "delivery": {
+    "eyebrow": "Our own delivery",
+    "title": "Don't want to go out? We'll bring it.",
+    "text": "DK22's own delivery, no middleman — direct order, fast delivery.",
+    "cta": "Order on WhatsApp"
+  },
+  "social": {
+    "eyebrow": "Instagram",
+    "title": "Behind the scenes, deals and the night",
+    "cta": "Follow on Instagram"
+  },
+  "footer": {
+    "note": "DK22 · Canasvieiras, Florianópolis - SC · Family business"
+  }
+}

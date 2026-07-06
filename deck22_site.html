@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deck22 — Canasvieiras, Florianópolis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep: #0B1E2D;
+    --bg-panel: #10293D;
+    --coral: #FF5C77;
+    --teal: #2FE6C9;
+    --gold: #E8B750;
+    --off-white: #F4F0E8;
+    --line: rgba(244,240,232,0.12);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg-deep);
+    color: var(--off-white);
+    font-family: 'Inter', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Space Grotesk', sans-serif;
+    letter-spacing:-0.01em;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .container{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* NAV */
+  nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    padding:18px 0;
+    background: rgba(11,30,45,0.0);
+    transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled{
+    background: rgba(11,30,45,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-logo{
+    font-family:'Monoton', cursive;
+    font-size:1.4rem;
+    color: var(--coral);
+    letter-spacing: 0.05em;
+  }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    list-style:none;
+    font-size:0.9rem;
+    font-weight:500;
+  }
+  .nav-links a{
+    opacity:0.8;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover{ opacity:1; color:var(--teal); }
+  .nav-cta{
+    border:1px solid var(--teal);
+    color:var(--teal) !important;
+    padding:8px 18px;
+    border-radius:100px;
+    font-size:0.85rem;
+    font-weight:600;
+  }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--off-white); font-size:1.5rem; cursor:pointer; }
+
+  @media (max-width: 760px){
+    .nav-links{
+      position:fixed;
+      top:0; right:-100%;
+      height:100vh;
+      width:75%;
+      background: var(--bg-panel);
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      padding:40px;
+      gap:28px;
+      transition: right 0.35s ease;
+      border-left: 1px solid var(--line);
+    }
+    .nav-links.open{ right:0; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:140px 24px 80px;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 100%, rgba(47,230,201,0.10), transparent),
+      radial-gradient(ellipse 50% 40% at 20% 0%, rgba(255,92,119,0.08), transparent);
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image: repeating-linear-gradient(0deg, rgba(244,240,232,0.025) 0px, rgba(244,240,232,0.025) 1px, transparent 1px, transparent 3px);
+    pointer-events:none;
+  }
+
+  .neon-sign{
+    font-family:'Monoton', cursive;
+    font-size: clamp(3.2rem, 12vw, 8rem);
+    color: var(--coral);
+    line-height:1;
+    text-shadow:
+      0 0 6px rgba(255,92,119,0.9),
+      0 0 18px rgba(255,92,119,0.7),
+      0 0 40px rgba(255,92,119,0.4),
+      0 0 80px rgba(255,92,119,0.2);
+    animation: flicker 4.2s infinite;
+    position:relative;
+    z-index:2;
+  }
+
+  @keyframes flicker{
+    0%, 3%, 6%, 100% { opacity:1; }
+    4% { opacity:0.4; }
+    5% { opacity:0.9; }
+    7% { opacity:0.65; }
+    8% { opacity:1; }
+  }
+
+  .hero-sub{
+    margin-top:20px;
+    font-size:clamp(1rem, 2.4vw, 1.35rem);
+    color: var(--off-white);
+    opacity:0.85;
+    font-weight:500;
+    position:relative; z-index:2;
+  }
+
+  .status-badge{
+    margin-top:28px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 18px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    background: rgba(16,41,61,0.6);
+    font-size:0.85rem;
+    font-weight:600;
+    position:relative; z-index:2;
+  }
+  .status-dot{
+    width:9px; height:9px; border-radius:50%;
+    background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
+  }
+  .status-dot.closed{ background:#ff5c5c; box-shadow:0 0 8px #ff5c5c; }
+
+  .hero-ctas{
+    margin-top:36px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    justify-content:center;
+    position:relative; z-index:2;
+  }
+  .btn{
+    padding:14px 28px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.95rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display:inline-block;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-primary{
+    background: var(--teal);
+    color: var(--bg-deep);
+    box-shadow: 0 0 24px rgba(47,230,201,0.35);
+  }
+  .btn-outline{
+    border:1px solid var(--off-white);
+    color: var(--off-white);
+  }
+
+  /* TICKER */
+  .ticker-wrap{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background: var(--bg-panel);
+    padding:14px 0;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .ticker{
+    display:inline-block;
+    padding-left:100%;
+    animation: ticker-scroll 28s linear infinite;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:0.06em;
+    font-size:0.85rem;
+    color: var(--gold);
+  }
+  .ticker span{ margin:0 28px; opacity:0.9; }
+  @keyframes ticker-scroll{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-100%); }
+  }
+
+  /* SECTIONS */
+  section{ padding:110px 0; position:relative; }
+  .eyebrow{
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color: var(--teal);
+    margin-bottom:14px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    font-weight:700;
+    margin-bottom:20px;
+  }
+  .section-text{
+    font-size:1.05rem;
+    opacity:0.82;
+    max-width:560px;
+  }
+
+  /* SOBRE */
+  .sobre-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .sobre-window{
+    aspect-ratio: 4/5;
+    border-radius:18px;
+    background:
+      linear-gradient(160deg, rgba(255,92,119,0.18), rgba(47,230,201,0.14)),
+      linear-gradient(0deg, var(--bg-panel), var(--bg-panel));
+    border:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:28px;
+  }
+  .sobre-window::before{
+    content:"";
+    position:absolute;
+    top:-20%; left:-10%;
+    width:60%; height:60%;
+    background: radial-gradient(circle, rgba(255,92,119,0.5), transparent 70%);
+    filter: blur(20px);
+  }
+  .sobre-window::after{
+    content:"";
+    position:absolute;
+    bottom:-20%; right:-10%;
+    width:60%; height:60%;
+    background: radial-gradient(circle, rgba(47,230,201,0.45), transparent 70%);
+    filter: blur(20px);
+  }
+  .sobre-window .tag{
+    position:relative; z-index:2;
+    font-family:'Space Grotesk';
+    font-weight:600;
+    font-size:0.85rem;
+    background: rgba(11,30,45,0.55);
+    padding:8px 14px;
+    border-radius:8px;
+    border:1px solid var(--line);
+  }
+
+  .sobre-list{
+    list-style:none;
+    margin-top:28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .sobre-list li{
+    display:flex;
+    gap:12px;
+    font-size:0.98rem;
+    opacity:0.9;
+  }
+  .sobre-list li::before{
+    content:"—";
+    color: var(--coral);
+    font-weight:700;
+  }
+
+  /* CARDAPIO */
+  .cardapio-header{ text-align:center; max-width:640px; margin:0 auto 56px; }
+  .cardapio-header .section-text{ max-width:none; margin:0 auto; }
+  .cards-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:24px;
+  }
+  .card{
+    background: var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:28px 24px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .card:hover{ transform: translateY(-4px); border-color: var(--coral); }
+  .card .icon{
+    font-size:1.8rem;
+    margin-bottom:16px;
+    display:block;
+  }
+  .card h3{ font-size:1.1rem; margin-bottom:8px; }
+  .card p{ font-size:0.9rem; opacity:0.75; }
+
+  @media (max-width: 900px){
+    .sobre-grid{ grid-template-columns:1fr; }
+    .cards-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px){
+    .cards-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* HORARIO / LOCAL */
+  .local-section{ background: var(--bg-panel); }
+  .local-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .hours-table{
+    width:100%;
+    margin-top:24px;
+    border-collapse:collapse;
+  }
+  .hours-table tr{ border-bottom:1px solid var(--line); }
+  .hours-table td{ padding:12px 0; font-size:0.95rem; }
+  .hours-table td:last-child{ text-align:right; color:var(--teal); font-weight:600; }
+
+  .map-box{
+    aspect-ratio:1/1;
+    border-radius:16px;
+    border:1px solid var(--line);
+    background:
+      linear-gradient(rgba(11,30,45,0.55), rgba(11,30,45,0.75)),
+      repeating-linear-gradient(45deg, rgba(244,240,232,0.04) 0 2px, transparent 2px 14px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    text-align:center;
+    padding:32px;
+  }
+  .map-box .pin{ font-size:2.4rem; }
+  .map-box p{ opacity:0.8; font-size:0.95rem; max-width:280px; }
+
+  @media (max-width: 900px){
+    .local-grid{ grid-template-columns:1fr; }
+  }
+
+  /* DELIVERY BAND */
+  .delivery-band{
+    background: linear-gradient(120deg, rgba(255,92,119,0.14), rgba(47,230,201,0.10));
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    text-align:center;
+  }
+  .delivery-band .section-text{ margin:0 auto 32px; max-width:520px; }
+
+  /* SOCIAL */
+  .social-section{ text-align:center; }
+  .social-handle{
+    font-family:'Space Grotesk';
+    font-size:1.6rem;
+    font-weight:700;
+    color: var(--gold);
+    display:inline-block;
+    margin:18px 0 30px;
+  }
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--line);
+    padding:48px 0 36px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    align-items:center;
+  }
+  .footer-logo{
+    font-family:'Monoton', cursive;
+    color: var(--coral);
+    font-size:1.1rem;
+  }
+  .footer-links{
+    display:flex;
+    gap:22px;
+    list-style:none;
+    font-size:0.85rem;
+    opacity:0.75;
+  }
+  .footer-note{
+    margin-top:24px;
+    font-size:0.8rem;
+    opacity:0.5;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .neon-sign{ animation:none; }
+    .ticker{ animation:none; padding-left:0; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a href="#hero" class="nav-logo">DECK22</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#local">Localização</a></li>
+      <li><a href="#delivery">Delivery</a></li>
+      <li><a class="nav-cta" href="https://wa.me/5548000000000" target="_blank">WhatsApp</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <h1 class="neon-sign">DECK22</h1>
+  <p class="hero-sub">Conveniência de dia. Point de noite. Canasvieiras.</p>
+  <div class="status-badge" id="statusBadge">
+    <span class="status-dot" id="statusDot"></span>
+    <span id="statusText">verificando horário...</span>
+  </div>
+  <div class="hero-ctas">
+    <a href="#cardapio" class="btn btn-primary">Ver cardápio</a>
+    <a href="https://wa.me/5548000000000" target="_blank" class="btn btn-outline">Chamar no WhatsApp</a>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>DESTILADOS</span><span>•</span><span>GIN & VODKA</span><span>•</span><span>ESPUMANTES</span><span>•</span>
+    <span>TABACARIA</span><span>•</span><span>GELO</span><span>•</span><span>BEBIDAS GELADAS</span><span>•</span>
+    <span>COMBOS & DOSES</span><span>•</span><span>DESTILADOS</span><span>•</span><span>GIN & VODKA</span><span>•</span>
+    <span>ESPUMANTES</span><span>•</span><span>TABACARIA</span><span>•</span><span>GELO</span><span>•</span>
+    <span>BEBIDAS GELADAS</span><span>•</span><span>COMBOS & DOSES</span><span>•</span>
+  </div>
+</div>
+
+<section id="sobre">
+  <div class="container sobre-grid">
+    <div>
+      <span class="eyebrow">A casa</span>
+      <h2 class="section-title">Metade loja de conveniência,<br>metade point da noite.</h2>
+      <p class="section-text">O Deck22 nasceu em Canasvieiras pra resolver um problema simples: de dia, o básico da conveniência — gelo, bebida gelada, cigarro, o que faltar. De noite, vira point — drinks, dose, música e aquele clima de Floripa que só a praia dá.</p>
+      <ul class="sobre-list">
+        <li>Negócio de família, tocado no dia a dia por quem mora aqui</li>
+        <li>Seleção pensada pra praia: do gelo ao espumante</li>
+        <li>Movimento forte de sexta a domingo, mas de conveniência todo santo dia</li>
+      </ul>
+    </div>
+    <div class="sobre-window">
+      <span class="tag">Canasvieiras, Florianópolis</span>
+    </div>
+  </div>
+</section>
+
+<section id="cardapio">
+  <div class="container">
+    <div class="cardapio-header">
+      <span class="eyebrow">Cardápio</span>
+      <h2 class="section-title">O que tem na casa</h2>
+      <p class="section-text">Uma curadoria enxuta, pensada pra praia e pra noite — sem enrolação.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <span class="icon">🥃</span>
+        <h3>Destilados</h3>
+        <p>Whisky, cachaça e afins, das marcas de sempre às de ocasião especial.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🍸</span>
+        <h3>Gin & Vodka</h3>
+        <p>O carro-chefe da noite. Combos e doses prontos pra servir.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🥂</span>
+        <h3>Espumantes</h3>
+        <p>Pra brindar o pôr do sol ou fechar a noite em grande estilo.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🚬</span>
+        <h3>Tabacaria</h3>
+        <p>Cigarros, papéis e acessórios — sempre à mão.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🧊</span>
+        <h3>Gelo & Combos</h3>
+        <p>Gelo de saco, gelo de sabor e combos prontos pra não faltar nada.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🍺</span>
+        <h3>Bebidas Geladas</h3>
+        <p>Cerveja e refrigerante sempre no ponto — geladas de verdade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="local" class="local-section">
+  <div class="container local-grid">
+    <div>
+      <span class="eyebrow">Horário & Localização</span>
+      <h2 class="section-title">Bora até lá</h2>
+      <p class="section-text">Em Canasvieiras, a poucos passos da praia. Verão ou inverno, sempre tem alguém de plantão.</p>
+      <table class="hours-table">
+        <tr><td>Segunda a quinta</td><td>10h – 00h</td></tr>
+        <tr><td>Sexta e sábado</td><td>10h – 02h</td></tr>
+        <tr><td>Domingo</td><td>12h – 00h</td></tr>
+      </table>
+    </div>
+    <div class="map-box">
+      <span class="pin">📍</span>
+      <p>Canasvieiras, Florianópolis - SC</p>
+      <a href="https://maps.google.com/?q=Canasvieiras+Florianopolis" target="_blank" class="btn btn-outline">Abrir no Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<section id="delivery" class="delivery-band">
+  <div class="container" style="text-align:center;">
+    <span class="eyebrow">Delivery próprio</span>
+    <h2 class="section-title">Não quer sair? A gente leva.</h2>
+    <p class="section-text">Delivery próprio do Deck22, sem intermediário — pedido direto, entrega rápida, do jeito que devia ser.</p>
+    <a href="https://wa.me/5548000000000" target="_blank" class="btn btn-primary">Pedir pelo WhatsApp</a>
+  </div>
+</section>
+
+<section class="social-section">
+  <div class="container">
+    <span class="eyebrow">Instagram</span>
+    <h2 class="section-title">Bastidores, promoções e a night</h2>
+    <a href="#" target="_blank" class="social-handle">@deck22</a>
+    <br>
+    <a href="#" target="_blank" class="btn btn-outline">Seguir no Instagram</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <span class="footer-logo">DECK22</span>
+      <ul class="footer-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#local">Localização</a></li>
+        <li><a href="https://wa.me/5548000000000" target="_blank">WhatsApp</a></li>
+      </ul>
+    </div>
+    <p class="footer-note">Deck22 · Canasvieiras, Florianópolis - SC · Negócio de família</p>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu toggle
+  const navLinks = document.getElementById('navLinks');
+  const navToggle = document.getElementById('navToggle');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Open/closed status based on local time
+  function updateStatus(){
+    const now = new Date();
+    const day = now.getDay(); // 0 = domingo
+    const hour = now.getHours() + now.getMinutes()/60;
+
+    let openHour, closeHour; // closeHour < openHour means it crosses midnight
+    if(day === 0){ openHour = 12; closeHour = 24; }
+    else if(day === 5 || day === 6){ openHour = 10; closeHour = 26; } // até 02h
+    else { openHour = 10; closeHour = 24; }
+
+    let effectiveHour = hour;
+    let isOpen;
+    if(closeHour > 24){
+      // pode estar aberto na madrugada (0h-2h) contando como parte do dia anterior
+      isOpen = (hour >= openHour) || (hour < closeHour - 24);
+    } else {
+      isOpen = hour >= openHour && hour < closeHour;
+    }
+
+    const dot = document.getElementById('statusDot');
+    const text = document.getElementById('statusText');
+    if(isOpen){
+      dot.classList.remove('closed');
+      text.textContent = 'Aberto agora';
+    } else {
+      dot.classList.add('closed');
+      text.textContent = 'Fechado no momento';
+    }
+  }
+  updateStatus();
+  setInterval(updateStatus, 60000);
+</script>
+
+</body>
+</html>
