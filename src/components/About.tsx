@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 export function About() {
@@ -23,19 +24,14 @@ export function About() {
             ))}
           </ul>
         </div>
-        <div
-          className="relative flex aspect-[4/5] items-end overflow-hidden rounded-[18px] border border-white/10 bg-black2 p-7"
-          style={{
-            backgroundImage:
-              'linear-gradient(160deg, rgba(198,255,0,0.10), transparent 60%)',
-          }}
-        >
-          <div
-            className="pointer-events-none absolute -left-[10%] -top-[15%] h-[55%] w-[55%] blur-2xl"
-            style={{
-              background:
-                'radial-gradient(circle, rgba(198,255,0,0.35), transparent 70%)',
-            }}
+        <div className="relative flex aspect-[4/5] items-end overflow-hidden rounded-[18px] border border-white/10 bg-black2 p-7">
+          <Image
+            src="/images/fachada.jpg"
+            alt={t('tag')}
+            fill
+            sizes="(max-width: 900px) 100vw, 50vw"
+            className="object-cover"
+            priority
           />
           <span className="relative z-[2] rounded-lg border border-white/10 bg-black/55 px-[14px] py-2 font-bebas text-[0.85rem] tracking-wide">
             {t('tag')}

@@ -6,9 +6,7 @@ export const siteConfig = {
   whatsappNumber: '5548992050818',
   instagramHandle: 'deck22canas',
   instagramUrl: 'https://instagram.com/deck22canas',
-  // TODO: replace with the exact street address once confirmed, e.g.
-  // "Av. das Nações, 1234 - Canasvieiras, Florianópolis - SC"
-  mapsQuery: 'Canasvieiras, Florianópolis - SC',
+  mapsQuery: 'Rua Madre Maria Villac, 1271 - Canasvieiras, Florianópolis - SC, 88054-000',
   siteUrl: 'https://deck22conveniencia.com.br',
 } as const;
 
@@ -19,4 +17,8 @@ export function whatsappLink(message?: string) {
 
 export function mapsLink() {
   return `https://maps.google.com/?q=${encodeURIComponent(siteConfig.mapsQuery)}`;
+}
+
+export function mapsEmbedSrc() {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(siteConfig.mapsQuery)}&output=embed`;
 }

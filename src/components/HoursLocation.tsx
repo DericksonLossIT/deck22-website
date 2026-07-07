@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { mapsLink } from '@/lib/site-config';
+import { mapsEmbedSrc, mapsLink } from '@/lib/site-config';
 
 export function HoursLocation() {
   const t = useTranslations('local');
@@ -24,17 +24,14 @@ export function HoursLocation() {
           </p>
         </div>
 
-        <div
-          className="flex aspect-square flex-col items-center justify-center gap-4 rounded-2xl border border-white/10 p-8 text-center"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 14px)',
-          }}
-        >
-          <span className="text-[2.2rem]">📍</span>
-          <p className="max-w-[280px] text-[0.95rem] opacity-75">
-            {t('map.text')}
-          </p>
+        <div className="flex aspect-square flex-col gap-4 overflow-hidden rounded-2xl border border-white/10 p-4 text-center">
+          <iframe
+            src={mapsEmbedSrc()}
+            title={t('map.text')}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-full w-full flex-1 rounded-xl border-0"
+          />
           <a
             href={mapsLink()}
             target="_blank"
