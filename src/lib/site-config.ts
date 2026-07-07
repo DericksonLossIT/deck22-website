@@ -18,3 +18,7 @@ export function whatsappLink(message?: string) {
 export function mapsLink() {
   return `https://maps.google.com/?q=${encodeURIComponent(siteConfig.mapsQuery)}`;
 }
+
+export function mapsEmbedSrc() {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(siteConfig.mapsQuery)}&output=embed`;
+}
