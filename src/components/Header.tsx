@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { BrandMark } from './BrandMark';
-import { whatsappLink } from '@/lib/site-config';
+import { WhatsAppLink } from './WhatsAppLink';
 
 const NAV_ITEMS = [
   { href: '#sobre', key: 'sobre' },
@@ -75,15 +75,12 @@ export function Header() {
               </li>
             ))}
             <li>
-              <a
-                href={whatsappLink()}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
                 onClick={closeMenu}
                 className="rounded-full bg-lime px-[18px] py-[9px] text-[0.8rem] font-bold text-black"
               >
                 WhatsApp
-              </a>
+              </WhatsAppLink>
             </li>
           </ul>
 

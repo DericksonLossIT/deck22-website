@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { whatsappLink } from '@/lib/site-config';
+import { WhatsAppLink } from './WhatsAppLink';
 
 export function MenuMock() {
   const t = useTranslations('cardapio');
@@ -27,14 +27,9 @@ export function MenuMock() {
             {t('mock.title')}
           </h3>
           <p className="mb-[26px] text-[0.92rem] opacity-70">{t('mock.text')}</p>
-          <a
-            href={whatsappLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full rounded-full bg-lime px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5"
-          >
+          <WhatsAppLink className="block w-full rounded-full bg-lime px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5">
             {t('mock.cta')}
-          </a>
+          </WhatsAppLink>
         </div>
       </div>
     </section>

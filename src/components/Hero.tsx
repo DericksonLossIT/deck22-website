@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 import { Crown } from './Crown';
 import { BrandMark } from './BrandMark';
 import { OpenStatusBadge } from './OpenStatusBadge';
-import { whatsappLink } from '@/lib/site-config';
+import { WhatsAppLink } from './WhatsAppLink';
 
 export function Hero() {
   const t = useTranslations('hero');
@@ -47,14 +47,9 @@ export function Hero() {
         >
           {t('cta.cardapio')}
         </a>
-        <a
-          href={whatsappLink()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full border-[1.5px] border-white px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-white transition-transform hover:-translate-y-0.5"
-        >
+        <WhatsAppLink className="rounded-full border-[1.5px] border-white px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-white transition-transform hover:-translate-y-0.5">
           {t('cta.whatsapp')}
-        </a>
+        </WhatsAppLink>
       </div>
     </section>
   );

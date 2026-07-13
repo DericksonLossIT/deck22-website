@@ -10,11 +10,6 @@ export const siteConfig = {
   siteUrl: 'https://deck22conveniencia.com.br',
 } as const;
 
-export function whatsappLink(message?: string) {
-  const base = `https://wa.me/${siteConfig.whatsappNumber}`;
-  return message ? `${base}?text=${encodeURIComponent(message)}` : base;
-}
-
 export function mapsLink() {
   return `https://maps.google.com/?q=${encodeURIComponent(siteConfig.mapsQuery)}`;
 }

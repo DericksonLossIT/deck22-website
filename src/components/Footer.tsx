@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { whatsappLink } from '@/lib/site-config';
+import { WhatsAppLink } from './WhatsAppLink';
 
 export function Footer() {
   const tNav = useTranslations('nav');
@@ -23,9 +23,7 @@ export function Footer() {
               <a href="#local">{tNav('local')}</a>
             </li>
             <li>
-              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
-                WhatsApp
-              </a>
+              <WhatsAppLink>WhatsApp</WhatsAppLink>
             </li>
           </ul>
         </div>

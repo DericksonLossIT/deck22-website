@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { whatsappLink } from '@/lib/site-config';
+import { WhatsAppLink } from './WhatsAppLink';
 
 export function Delivery() {
   const t = useTranslations('delivery');
@@ -23,14 +23,9 @@ export function Delivery() {
         <p className="mx-auto mb-8 max-w-[520px] text-[1.02rem] opacity-80">
           {t('text')}
         </p>
-        <a
-          href={whatsappLink()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block rounded-full bg-lime px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5"
-        >
+        <WhatsAppLink className="inline-block rounded-full bg-lime px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5">
           {t('cta')}
-        </a>
+        </WhatsAppLink>
       </div>
     </section>
   );
