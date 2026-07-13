@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
-import { routing, type Locale } from '@/i18n/routing';
+import { routing } from '@/i18n/routing';
+import { LOCALE_META } from '@/i18n/locale-meta';
 import { BrandMark } from './BrandMark';
 import { WhatsAppLink } from './WhatsAppLink';
 
@@ -14,12 +15,6 @@ const NAV_ITEMS = [
   { href: '#local', key: 'local' },
   { href: '#delivery', key: 'delivery' },
 ] as const;
-
-const LOCALE_FLAGS: Record<Locale, { flagSrc: string; label: string }> = {
-  pt: { flagSrc: '/flags/br.svg', label: 'Português' },
-  es: { flagSrc: '/flags/ar.svg', label: 'Español' },
-  en: { flagSrc: '/flags/us.svg', label: 'English' },
-};
 
 export function Header() {
   const t = useTranslations('nav');
@@ -90,9 +85,9 @@ export function Header() {
                 <button
                   key={loc}
                   onClick={() => switchLocale(loc)}
-                  aria-label={LOCALE_FLAGS[loc].label}
+                  aria-label={LOCALE_META[loc].label}
                   aria-pressed={locale === loc}
-                  title={LOCALE_FLAGS[loc].label}
+                  title={LOCALE_META[loc].label}
                   className={`flex h-8 w-8 items-center justify-center rounded-full p-[3px] transition-all ${
                     locale === loc
                       ? 'bg-lime scale-105'
@@ -101,8 +96,8 @@ export function Header() {
                 >
                   <span className="relative block h-full w-full overflow-hidden rounded-full ring-1 ring-white/20">
                     <Image
-                      src={LOCALE_FLAGS[loc].flagSrc}
-                      alt={LOCALE_FLAGS[loc].label}
+                      src={LOCALE_META[loc].flagSrc}
+                      alt={LOCALE_META[loc].label}
                       fill
                       sizes="26px"
                       className="object-cover"

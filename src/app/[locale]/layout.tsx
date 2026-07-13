@@ -4,7 +4,8 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { notFound } from 'next/navigation';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
+import { localePath } from '@/i18n/navigation';
 import { cinzel, bebasNeue, montserrat } from '@/lib/fonts';
 import { siteConfig } from '@/lib/site-config';
 import '../globals.css';
@@ -22,7 +23,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'meta' });
 
   const languages = Object.fromEntries(
-    routing.locales.map((l) => [l, l === routing.defaultLocale ? '/' : `/${l}`]),
+    routing.locales.map((l) => [l, localePath(l)]),
   );
 
   return {
@@ -30,13 +31,13 @@ export async function generateMetadata({
     description: t('description'),
     metadataBase: new URL(siteConfig.siteUrl),
     alternates: {
-      canonical: locale === routing.defaultLocale ? '/' : `/${locale}`,
+      canonical: localePath(locale as Locale),
       languages,
     },
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: locale === routing.defaultLocale ? '/' : `/${locale}`,
+      url: localePath(locale as Locale),
       siteName: 'DK22',
       locale,
       type: 'website',
