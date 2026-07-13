@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
 import { BrandMark } from './BrandMark';
 import { whatsappLink } from '@/lib/site-config';
 
@@ -13,6 +14,12 @@ const NAV_ITEMS = [
   { href: '#local', key: 'local' },
   { href: '#delivery', key: 'delivery' },
 ] as const;
+
+const LOCALE_FLAGS: Record<Locale, { flagSrc: string; label: string }> = {
+  pt: { flagSrc: '/flags/br.svg', label: 'Português' },
+  es: { flagSrc: '/flags/ar.svg', label: 'Español' },
+  en: { flagSrc: '/flags/us.svg', label: 'English' },
+};
 
 export function Header() {
   const t = useTranslations('nav');
@@ -67,21 +74,6 @@ export function Header() {
                 </a>
               </li>
             ))}
-            <li className="flex gap-1 rounded-full border border-white/10 p-[3px] max-[860px]:order-[-1]">
-              {routing.locales.map((loc) => (
-                <button
-                  key={loc}
-                  onClick={() => switchLocale(loc)}
-                  className={`rounded-full px-[10px] py-[5px] text-[0.72rem] font-bold tracking-wide transition-all ${
-                    locale === loc
-                      ? 'bg-lime text-black'
-                      : 'bg-transparent text-white opacity-55'
-                  }`}
-                >
-                  {loc.toUpperCase()}
-                </button>
-              ))}
-            </li>
             <li>
               <a
                 href={whatsappLink()}
@@ -95,13 +87,42 @@ export function Header() {
             </li>
           </ul>
 
-          <button
-            aria-label="Menu"
-            onClick={() => setMenuOpen((v) => !v)}
-            className="relative z-[200] hidden text-[1.4rem] text-white max-[860px]:block"
-          >
-            {menuOpen ? '✕' : '☰'}
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1 rounded-full border border-white/10 bg-black/40 p-1">
+              {routing.locales.map((loc) => (
+                <button
+                  key={loc}
+                  onClick={() => switchLocale(loc)}
+                  aria-label={LOCALE_FLAGS[loc].label}
+                  aria-pressed={locale === loc}
+                  title={LOCALE_FLAGS[loc].label}
+                  className={`flex h-8 w-8 items-center justify-center rounded-full p-[3px] transition-all ${
+                    locale === loc
+                      ? 'bg-lime scale-105'
+                      : 'opacity-50 hover:opacity-90'
+                  }`}
+                >
+                  <span className="relative block h-full w-full overflow-hidden rounded-full ring-1 ring-white/20">
+                    <Image
+                      src={LOCALE_FLAGS[loc].flagSrc}
+                      alt={LOCALE_FLAGS[loc].label}
+                      fill
+                      sizes="26px"
+                      className="object-cover"
+                    />
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            <button
+              aria-label="Menu"
+              onClick={() => setMenuOpen((v) => !v)}
+              className="relative z-[200] hidden text-[1.4rem] text-white max-[860px]:block"
+            >
+              {menuOpen ? '✕' : '☰'}
+            </button>
+          </div>
         </div>
       </nav>
 
