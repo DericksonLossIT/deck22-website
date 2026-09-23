@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Crown } from './Crown';
 import { BrandMark } from './BrandMark';
+import { MenuLink } from './MenuLink';
 import { OpenStatusBadge } from './OpenStatusBadge';
 import { WhatsAppLink } from './WhatsAppLink';
 
@@ -41,12 +42,12 @@ export function Hero() {
       <OpenStatusBadge />
 
       <div className="relative z-[2] mt-[34px] flex flex-wrap justify-center gap-[14px]">
-        <a
-          href="#cardapio"
+        <MenuLink
+          source="hero"
           className="rounded-full bg-lime px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5"
         >
           {t('cta.cardapio')}
-        </a>
+        </MenuLink>
         <WhatsAppLink className="rounded-full border-[1.5px] border-white px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-white transition-transform hover:-translate-y-0.5">
           {t('cta.whatsapp')}
         </WhatsAppLink>

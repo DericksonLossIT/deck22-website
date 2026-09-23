@@ -40,9 +40,10 @@
   "cardapio": {
     "eyebrow": "Menú",
     "title": "Lo que hay en la casa",
-    "text": "El menú completo llega pronto. Mientras tanto, escribinos por WhatsApp y te pasamos todo.",
+    "text": "Nuestro menú digital ya está en línea. Elegí, pedí y, si preferís, escribinos por WhatsApp y lo resolvemos.",
+    "cta": "Abrir menú",
     "mock": {
-      "title": "Menú digital muy pronto",
+      "title": "Menú digital",
       "text": "Destilados, gin & vodka, espumantes, tabaquería, hielo y bebidas frías — todo en un toque.",
       "cta": "Pedir por WhatsApp"
     }

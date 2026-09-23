@@ -7,8 +7,13 @@ import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { LOCALE_META } from '@/i18n/locale-meta';
 import { BrandMark } from './BrandMark';
+import { MenuLink } from './MenuLink';
 import { WhatsAppLink } from './WhatsAppLink';
 
+const NAV_LINK_CLASS =
+  'uppercase opacity-80 transition-opacity hover:text-lime hover:opacity-100';
+
+// "cardapio" opens the external digital menu (MenuLink); the rest are page anchors.
 const NAV_ITEMS = [
   { href: '#sobre', key: 'sobre' },
   { href: '#cardapio', key: 'cardapio' },
@@ -60,13 +65,19 @@ export function Header() {
           >
             {NAV_ITEMS.map((item) => (
               <li key={item.key}>
-                <a
-                  href={item.href}
-                  onClick={closeMenu}
-                  className="uppercase opacity-80 transition-opacity hover:text-lime hover:opacity-100"
-                >
-                  {t(item.key)}
-                </a>
+                {item.key === 'cardapio' ? (
+                  <MenuLink
+                    source="nav"
+                    onClick={closeMenu}
+                    className={NAV_LINK_CLASS}
+                  >
+                    {t(item.key)}
+                  </MenuLink>
+                ) : (
+                  <a href={item.href} onClick={closeMenu} className={NAV_LINK_CLASS}>
+                    {t(item.key)}
+                  </a>
+                )}
               </li>
             ))}
             <li>

@@ -40,9 +40,10 @@
   "cardapio": {
     "eyebrow": "Cardápio",
     "title": "O que tem na casa",
-    "text": "O cardápio completo chega aqui em breve. Por enquanto, chama no WhatsApp que a gente já te passa tudo.",
+    "text": "Nosso cardápio digital está no ar. Escolha, peça e, se preferir, chama no WhatsApp que a gente resolve.",
+    "cta": "Abrir cardápio",
     "mock": {
-      "title": "Cardápio digital em breve",
+      "title": "Cardápio digital",
       "text": "Destilados, gin & vodka, espumantes, tabacaria, gelo e bebidas geladas — tudo num toque.",
       "cta": "Pedir pelo WhatsApp"
     }

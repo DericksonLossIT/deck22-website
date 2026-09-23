@@ -9,6 +9,7 @@ import { Delivery } from '@/components/Delivery';
 import { Instagram } from '@/components/Instagram';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFloat } from '@/components/WhatsAppFloat';
+import { MenuFloat } from '@/components/MenuFloat';
 
 export default async function HomePage({
   params,
@@ -31,6 +32,7 @@ export default async function HomePage({
         <Instagram />
       </main>
       <Footer />
+      <MenuFloat />
       <WhatsAppFloat />
     </>
   );

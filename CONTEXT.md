@@ -9,6 +9,14 @@ and its anchor markup (`target`, `rel`) behind one interface. Every call to acti
 WhatsApp (`Hero`, `Header`, `Footer`, `Delivery`, `MenuMock`, `WhatsAppFloat`) renders through it
 instead of hand-wrapping the URL builder.
 
+## Menu CTA
+
+The `MenuLink` module (`src/components/MenuLink.tsx`). Owns the external digital-menu URL
+(`siteConfig.menuUrl`, hosted on NexPDV), its anchor markup, and the click tracking
+(`track('menu_click', { source })` via `@vercel/analytics`). Every call to action that opens the
+menu (`Hero`, `Header`, `MenuMock`, `MenuFloat`) renders through it and passes a `source` so
+clicks can be compared per placement.
+
 ## Locale identity
 
 The set of `src/i18n/*` modules that together own everything about which locales exist:
