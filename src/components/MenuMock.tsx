@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { MenuLink } from './MenuLink';
 import { WhatsAppLink } from './WhatsAppLink';
 
 export function MenuMock() {
@@ -27,7 +28,13 @@ export function MenuMock() {
             {t('mock.title')}
           </h3>
           <p className="mb-[26px] text-[0.92rem] opacity-70">{t('mock.text')}</p>
-          <WhatsAppLink className="block w-full rounded-full bg-lime px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5">
+          <MenuLink
+            source="section"
+            className="block w-full rounded-full bg-lime px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5"
+          >
+            {t('cta')}
+          </MenuLink>
+          <WhatsAppLink className="mt-3 block w-full rounded-full border-[1.5px] border-white px-7 py-[14px] text-[0.85rem] font-bold uppercase tracking-wide text-white transition-transform hover:-translate-y-0.5">
             {t('mock.cta')}
           </WhatsAppLink>
         </div>

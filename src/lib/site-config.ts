@@ -8,6 +8,7 @@ export const siteConfig = {
   instagramUrl: 'https://instagram.com/deck22canas',
   mapsQuery: 'Rua Madre Maria Villac, 1271 - Canasvieiras, Florianópolis - SC, 88054-000',
   siteUrl: 'https://deck22conveniencia.com.br',
+  menuUrl: 'https://meucomercio.com.br/deck22canas',
 } as const;
 
 export function mapsLink() {
